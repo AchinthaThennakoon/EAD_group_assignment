@@ -14,6 +14,7 @@ import javax.persistence.*;
 @Builder
 public class Content {
 
+    // add sequence genarators
     @Id
     private Integer contentId;
 
