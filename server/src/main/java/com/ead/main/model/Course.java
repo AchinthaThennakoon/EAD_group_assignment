@@ -1,12 +1,9 @@
 package com.ead.main.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.sun.istack.NotNull;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -16,6 +13,11 @@ import javax.persistence.Id;
 public class Course {
 
     @Id
+    @Column(unique=true)
+    @NotNull
+    private int Id;
+
+    @Column(unique=true)
     private String courseTitle;
 
 }

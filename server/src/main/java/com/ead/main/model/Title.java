@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.IdentityHashMap;
 
 @Entity
 @Data
@@ -15,6 +16,7 @@ import javax.persistence.*;
 public class Title {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String title;
