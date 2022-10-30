@@ -14,6 +14,7 @@ import javax.persistence.*;
 @Builder
 public class Title {
 
+    // add sequence genarator
     @Id
     private Integer id;
 
