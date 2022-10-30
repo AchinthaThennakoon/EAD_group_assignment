@@ -16,6 +16,7 @@ public class Content {
 
     // add sequence genarators
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer contentId;
 
     private String contentTitle;

@@ -16,6 +16,7 @@ public class Title {
 
     // add sequence genarator
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
 
     private String title;
