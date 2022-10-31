@@ -29,4 +29,9 @@ public class TitleController {
         return titleService.updateTitle(title);
     }
 
+    @DeleteMapping("/deleteTitle/{id}")
+    public String deleteTitle(@PathVariable Integer id){
+        return titleService.deleteTitle(id);
+    }
+
 }

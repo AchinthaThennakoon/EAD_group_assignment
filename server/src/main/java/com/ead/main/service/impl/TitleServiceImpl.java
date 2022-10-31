@@ -30,4 +30,10 @@ public class TitleServiceImpl implements TitleService {
         titleRepository.updateTitle(title.getId(),title.getTitleName());
         return "successfully updated";
     }
+
+    @Override
+    public String deleteTitle(Integer id) {
+        titleRepository.deleteById(id);
+        return "successful";
+    }
 }

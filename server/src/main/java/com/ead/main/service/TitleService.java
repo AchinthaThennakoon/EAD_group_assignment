@@ -13,4 +13,6 @@ public interface TitleService {
     String saveTitle(Title title);
 
     String updateTitle(Title title);
+
+    String deleteTitle(Integer id);
 }
