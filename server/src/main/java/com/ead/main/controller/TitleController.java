@@ -12,7 +12,7 @@ public class TitleController {
     @Autowired
     private TitleService titleService;
 
-    @PutMapping("updateTitle")
+    @PutMapping("/updateTitle")
     public TitleDTO updateTitle(@RequestBody TitleDTO titleDTO){
         return titleService.updateTitle(titleDTO);
     }
