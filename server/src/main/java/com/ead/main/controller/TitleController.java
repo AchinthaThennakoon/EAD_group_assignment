@@ -21,7 +21,6 @@ public class TitleController {
 
     @PostMapping("/addTitle")
     public String addTitle(@RequestBody Title title){
-        System.out.println(title);
         return titleService.saveTitle(title);
     }
 
