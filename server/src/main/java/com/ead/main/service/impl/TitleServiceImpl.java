@@ -18,4 +18,10 @@ public class TitleServiceImpl implements TitleService {
         System.out.println(titleRepository.findAll());
         return titleRepository.findAll();
     }
+
+    @Override
+    public String saveTitle(Title title) {
+        titleRepository.save(title);
+        return "successful";
+    }
 }

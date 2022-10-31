@@ -9,4 +9,6 @@ import java.util.List;
 @Service
 public interface TitleService {
     List<Title> getTitles();
+
+    String saveTitle(Title title);
 }

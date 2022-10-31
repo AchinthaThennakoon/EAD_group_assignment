@@ -3,10 +3,7 @@ package com.ead.main.controller;
 import com.ead.main.model.Title;
 import com.ead.main.service.TitleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,6 +17,12 @@ public class TitleController {
     @GetMapping("/")
     public List<Title> getTitles(){
         return titleService.getTitles();
+    }
+
+    @PostMapping("/addTitle")
+    public String addTitle(@RequestBody Title title){
+        System.out.println(title);
+        return titleService.saveTitle(title);
     }
 
 
