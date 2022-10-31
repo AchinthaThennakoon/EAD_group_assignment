@@ -10,7 +10,7 @@ function Content() {
 
   const getcontent = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/maintanance`);
+      const res = await fetch(`http://localhost:8080/api/v1/title/`);
       const data = await res.json();
       console.log(data.data);
       const total = res.headers.get("x-total-count");
@@ -62,13 +62,13 @@ function Content() {
               {items.map((item) => {
                 return (
                   <tr key={item.id}>
-                    <td>{item.Category_Name}</td>
+                    <td>{item.titleName}</td>
                     <td>
                       <Link to={"/contentview"}>
                         <button className="btn btn-success m-1">View</button>
                       </Link>
                       <Link to={`/updatecontent?id=${item.id}`}>
-                      <button className="btn btn-secondary m-1">Edit</button>
+                        <button className="btn btn-secondary m-1">Edit</button>
                       </Link>
                       <button
                         className="btn btn-danger m-1"
