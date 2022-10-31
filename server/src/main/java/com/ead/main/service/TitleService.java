@@ -11,4 +11,6 @@ public interface TitleService {
     List<Title> getTitles();
 
     String saveTitle(Title title);
+
+    String updateTitle(Title title);
 }

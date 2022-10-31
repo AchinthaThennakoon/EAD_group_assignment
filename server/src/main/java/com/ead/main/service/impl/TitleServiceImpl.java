@@ -24,4 +24,10 @@ public class TitleServiceImpl implements TitleService {
         titleRepository.save(title);
         return "successful";
     }
+
+    @Override
+    public String updateTitle(Title title) {
+        titleRepository.updateTitle(title.getId(),title.getTitleName());
+        return "successfully updated";
+    }
 }

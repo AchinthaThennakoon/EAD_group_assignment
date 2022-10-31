@@ -24,5 +24,9 @@ public class TitleController {
         return titleService.saveTitle(title);
     }
 
+    @PutMapping("/editTitle")
+    public String editTitle(@RequestBody Title title){
+        return titleService.updateTitle(title);
+    }
 
 }
