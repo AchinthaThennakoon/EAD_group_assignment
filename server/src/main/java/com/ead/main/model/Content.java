@@ -16,7 +16,7 @@ public class Content {
 
     // add sequence genarators
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer contentId;
 
     private String contentTitle;
