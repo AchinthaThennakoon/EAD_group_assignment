@@ -13,9 +13,8 @@ import javax.persistence.*;
 public class Course {
 
     @Id
-    @Column(unique=true)
-    @NotNull
-    private int Id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     @Column(unique=true)
     private String courseTitle;
