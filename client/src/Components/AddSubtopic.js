@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Navbar from "./Navbar";
 import axios from "axios";
 
-function AddContent() {
+function AddSubtopic() {
   const [courseTopic, setCourseTopic] = useState("");
+  const [courseContent, setcourseContent] = useState("");
 
   const addContent = () => {
     axios
@@ -28,7 +29,7 @@ function AddContent() {
         <form>
           <div class="form-group">
             <br />
-            <label for="exampleFormControlInput1 p-2">Topic Name</label>
+            <label for="exampleFormControlInput1 p-2">Sub Topic Name</label>
             <br />
 
             <input
@@ -44,6 +45,15 @@ function AddContent() {
           <br />
 
           <div class="form-group">
+            <label for="exampleFormControlTextarea1">Add Content</label>
+            <textarea
+              onChange={(event) => {
+                setcourseContent(event.target.value);
+              }}
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              rows="3"
+            ></textarea>
             <br></br>
           </div>
           <button className="btn btn-primary m-2" onClick={addContent}>
@@ -55,4 +65,4 @@ function AddContent() {
   );
 }
 
-export default AddContent;
+export default AddSubtopic;
