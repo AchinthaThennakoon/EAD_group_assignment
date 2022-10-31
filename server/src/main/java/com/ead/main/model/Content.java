@@ -14,7 +14,9 @@ import javax.persistence.*;
 @Builder
 public class Content {
 
+    // add sequence genarators
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer contentId;
 
     private String contentTitle;
