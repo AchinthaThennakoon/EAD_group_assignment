@@ -29,7 +29,7 @@ function ContentView() {
       <div className="container">
         <div className="contentHedder card">
           <br />
-          <h1>{items.topicName}</h1>
+          <h1>HTML</h1>
           
         </div>
         <Link to={'/addsubtopic'}>
