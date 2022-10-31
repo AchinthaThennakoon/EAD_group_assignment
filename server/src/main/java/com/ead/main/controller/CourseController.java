@@ -19,4 +19,10 @@ public class CourseController {
     return course;
 }
 
+@DeleteMapping("/course/{id}")
+    private void deleteCourse(@PathVariable("id") int id)
+{
+    courseService.delete(id);
+}
+
 }

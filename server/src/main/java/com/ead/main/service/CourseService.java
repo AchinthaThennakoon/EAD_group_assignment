@@ -10,5 +10,6 @@ import javax.transaction.Transactional;
 public interface CourseService {
 
     public void saveOrUpdate(Course course);
+    public void delete(int id);
 
 }
