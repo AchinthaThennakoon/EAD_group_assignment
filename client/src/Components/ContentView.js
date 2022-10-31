@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 
 function ContentView() {
@@ -29,7 +30,11 @@ function ContentView() {
         <div className="contentHedder card">
           <br />
           <h1>{items.topicName}</h1>
+          
         </div>
+        <Link to={'/addsubtopic'}>
+        <button className="btn btn-primary">Add Content</button>
+        </Link>
         <hr />
         <div className="content">
           <p>

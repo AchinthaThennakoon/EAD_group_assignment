@@ -11,7 +11,7 @@ function Home() {
 
   const getCourseData = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/maintanance`);
+      const res = await fetch(`http://localhost:8080/api/v1/course/viewCourse`);
       const data = await res.json();
       console.log(data.data);
       const total = res.headers.get("x-total-count");
@@ -67,8 +67,8 @@ function Home() {
               {items.map((item) => {
                 return (
                   <tr key={item.id}>
-                    <th scope="row">{item.vehicle_No}</th>
-                    <td>{item.Category_Name}</td>
+                    <th scope="row">{item.id}</th>
+                    <td>{item.courseTitle}</td>
                     <td>
                       <Link to={"/content"}>
                         <button className="btn btn-success m-1">View</button>

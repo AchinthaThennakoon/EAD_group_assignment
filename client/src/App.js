@@ -7,6 +7,7 @@ import AddContent from "./Components/AddContent";
 import ContentView from "./Components/ContentView";
 import UpdateCourse from "./Components/UpdateCourse";
 import UpdateContent from "./Components/UpdateContent";
+import AddSubtopic from "./Components/AddSubtopic";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/contentview" element={<ContentView />} />
           <Route path="/updatecourse" element={<UpdateCourse />} />
           <Route path="/updatecontent" element={<UpdateContent />} />
+          <Route path="/addsubtopic" element={<AddSubtopic />} />
         </Routes>
       </BrowserRouter>
     </div>

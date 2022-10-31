@@ -8,8 +8,8 @@ function AddCourse() {
 
     const addCourse =()=>{
     axios
-      .post(`http://localhost:5000/api/addriver`, {
-        courseName: courseName,
+      .post(`http://localhost:8080/api/v1/course/addCourse`, {
+        courseTitle: courseName,
       })
       .then(() => {
         console.log('Success')
