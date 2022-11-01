@@ -13,4 +13,5 @@ public interface ContentService {
     String saveContent(Content content);
     String updateContent(Content content);
     String deleteContent(Integer id);
+    public Content getContentById(int contentId);
 }

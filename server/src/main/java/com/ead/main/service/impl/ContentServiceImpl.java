@@ -1,6 +1,7 @@
 package com.ead.main.service.impl;
 
 import com.ead.main.model.Content;
+import com.ead.main.model.Course;
 import com.ead.main.repository.ContentRepository;
 import com.ead.main.service.ContentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,12 @@ public class ContentServiceImpl implements ContentService {
     public List<Content> getContents(){
         System.out.println(contentRepository.findAll());
         return contentRepository.findAll();
+    }
+
+    @Override
+    public Content getContentById(int contentId)
+    {
+        return contentRepository.findById(contentId).get();
     }
 
     @Override
