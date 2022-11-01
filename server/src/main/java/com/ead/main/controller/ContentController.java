@@ -1,7 +1,7 @@
 package com.ead.main.controller;
 
-import com.ead.main.model.Title;
-import com.ead.main.service.CourseService;
+import com.ead.main.model.Content;
+import com.ead.main.service.ContentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,26 +11,27 @@ import java.util.List;
 @RequestMapping(value = "api/v1/content")
 @CrossOrigin
 public class ContentController {
-    @Autowired
-    ContentService contentService;
 
-    @GetMapping("/")
-    public List<Title> getTitles(){
-        return contentService.getContent();
+    @Autowired
+    private ContentService contentService;
+
+    @GetMapping("/getAll")
+    public List<Content> getContent(){
+        return contentService.getContents();
     }
 
-    @PostMapping("/addTitle")
-    public String addTitle(@RequestBody Title title){
+    @PostMapping("/addContent")
+    public String addContent(@RequestBody Content content){
         return contentService.saveContent(content);
     }
 
     @PutMapping("/editContent")
-    public String editTitle(@RequestBody Title title){
+    public String editContent(@RequestBody Content content){
         return contentService.updateContent(content);
     }
 
     @DeleteMapping("/deleteContent/{id}")
-    public String deleteTitle(@PathVariable Integer id){
+    public String deleteContent(@PathVariable Integer id){
         return contentService.deleteContent(id);
     }
 }

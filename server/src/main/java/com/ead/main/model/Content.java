@@ -22,14 +22,11 @@ public class Content {
     private String contentTitle;
     private String content;
 
-    @ManyToOne(
-            fetch = FetchType.LAZY,
-            optional = false
-    )
-    @JoinColumn(
+   @ManyToOne
+   @JoinColumn(
             name = "main_title_id",
-            referencedColumnName = "id"
-    )
+            nullable = false
+   )
     private Title title;
 
 

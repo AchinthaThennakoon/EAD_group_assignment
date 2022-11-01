@@ -22,13 +22,10 @@ public class Title {
 
     private String title;
 
-    @ManyToOne(
-            fetch = FetchType.LAZY,
-            optional = false
-    )
+    @ManyToOne
     @JoinColumn(
             name = "courseTitle",
-            referencedColumnName = "courseTitle"
+           nullable=false
     )
     private Course course;
 }
