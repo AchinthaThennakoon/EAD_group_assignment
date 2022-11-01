@@ -22,11 +22,12 @@ public class Content {
     private String contentTitle;
     private String content;
 
-    @ManyToOne
-    @JoinColumn(
-            name = "mainTitle",
-            nullable=false
-    )
+   @ManyToOne
+   @JoinColumn(
+            name = "main_title_id",
+            nullable = false
+   )
+
     private Title title;
 
 
