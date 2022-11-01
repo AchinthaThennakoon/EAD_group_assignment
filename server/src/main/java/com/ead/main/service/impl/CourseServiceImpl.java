@@ -7,12 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 
 @Transactional
 @Service
 public class CourseServiceImpl implements CourseService {
     @Autowired
-    private CourseRepository courseRepository;
+    public CourseRepository courseRepository;
 
     public void saveOrUpdate(Course course){
         courseRepository.save(course);
@@ -22,4 +24,14 @@ public class CourseServiceImpl implements CourseService {
     {
         courseRepository.deleteById(id);
     }
+
+    @Override
+    public List<Course> getAllCourse() {
+        return courseRepository.findAll();
+    }
+    public void add(Course course){
+        courseRepository.save(course);
+    }
+
+
 }

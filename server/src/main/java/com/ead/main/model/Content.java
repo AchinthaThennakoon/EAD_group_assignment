@@ -27,6 +27,7 @@ public class Content {
             name = "main_title_id",
             nullable = false
    )
+
     private Title title;
 
 

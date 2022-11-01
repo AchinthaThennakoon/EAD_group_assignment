@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.IdentityHashMap;
 
 @Entity
 @Data
@@ -20,12 +19,12 @@ public class Title {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 
-    private String title;
+    private String titleName;
 
     @ManyToOne
     @JoinColumn(
             name = "courseTitle",
-           nullable=false
+            nullable=false
     )
     private Course course;
 }
