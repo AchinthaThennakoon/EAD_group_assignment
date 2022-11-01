@@ -15,7 +15,7 @@ public interface ContentRepository extends JpaRepository<Content,Integer> {
     @Transactional
     @Query(
         nativeQuery = true,
-        value = "UPDATE Content  SET content_title =?2,content= ?3 WHERE id = ?1"
+        value = "UPDATE Content  SET content_title =?2,content= ?3 WHERE content_id = ?1"
     )
     int updateContent(Integer id, String content_title , String content);
 }
