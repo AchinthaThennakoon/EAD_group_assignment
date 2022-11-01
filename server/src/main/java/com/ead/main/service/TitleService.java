@@ -1,6 +1,5 @@
 package com.ead.main.service;
 
-import com.ead.main.controller.TitleController;
 import com.ead.main.model.Title;
 import org.springframework.stereotype.Service;
 
@@ -15,4 +14,6 @@ public interface TitleService {
     String updateTitle(Title title);
 
     String deleteTitle(Integer id);
+
+    Title getTitleById(int id);
 }

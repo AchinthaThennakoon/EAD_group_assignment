@@ -19,6 +19,11 @@ public class TitleServiceImpl implements TitleService {
         return titleRepository.findAll();
     }
 
+    public Title getTitleById(int id)
+    {
+        return titleRepository.findById(id).get();
+    }
+
     @Override
     public String saveTitle(Title title) {
         titleRepository.save(title);

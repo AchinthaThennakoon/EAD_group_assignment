@@ -19,6 +19,12 @@ public class TitleController {
         return titleService.getTitles();
     }
 
+    @GetMapping("/title/{id}")
+    public Title getTitle(@PathVariable("id") int id)
+    {
+        return titleService.getTitleById(id);
+    }
+
     @PostMapping("/addTitle")
     public String addTitle(@RequestBody Title title){
         return titleService.saveTitle(title);
