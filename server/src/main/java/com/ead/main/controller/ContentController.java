@@ -41,4 +41,9 @@ public class ContentController {
     public String deleteContent(@PathVariable Integer id){
         return contentService.deleteContent(id);
     }
+
+    @GetMapping("/getContentByTitleId/{id}")
+    public List<Content> getContentByTitleId(@PathVariable int id){
+        return contentService.getContentByTitleId(id);
+    }
 }

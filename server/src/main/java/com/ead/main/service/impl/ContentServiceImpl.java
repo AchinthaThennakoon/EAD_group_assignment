@@ -30,6 +30,11 @@ public class ContentServiceImpl implements ContentService {
     }
 
     @Override
+    public List<Content> getContentByTitleId(int id) {
+        return contentRepository.getContentByTitleId(id);
+    }
+
+    @Override
     public String saveContent(Content content) {
         contentRepository.save(content);
         return "successful";
