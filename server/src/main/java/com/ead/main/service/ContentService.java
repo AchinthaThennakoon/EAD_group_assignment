@@ -14,4 +14,6 @@ public interface ContentService {
     String updateContent(Content content);
     String deleteContent(Integer id);
     public Content getContentById(int contentId);
+
+    List<Content> getContentByTitleId(int id);
 }

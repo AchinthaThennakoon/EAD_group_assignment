@@ -25,6 +25,11 @@ public class TitleServiceImpl implements TitleService {
     }
 
     @Override
+    public List<Title> getTitleByCourseId(Integer id) {
+        return titleRepository.getTitlesByCourseId(id);
+    }
+
+    @Override
     public String saveTitle(Title title) {
         titleRepository.save(title);
         return "successful";

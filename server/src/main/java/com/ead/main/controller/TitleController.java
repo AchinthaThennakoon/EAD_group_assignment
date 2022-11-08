@@ -40,4 +40,9 @@ public class TitleController {
         return titleService.deleteTitle(id);
     }
 
+    @GetMapping("getTitleByCourseId/{id}")
+    public List<Title> TitleByCourseId(@PathVariable Integer id){
+        return titleService.getTitleByCourseId(id);
+    }
+
 }

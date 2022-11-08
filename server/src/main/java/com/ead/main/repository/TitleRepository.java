@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Repository
 public interface TitleRepository extends JpaRepository<Title,Integer> {
 
@@ -17,4 +19,10 @@ public interface TitleRepository extends JpaRepository<Title,Integer> {
             value = "UPDATE title SET title_name = ?2 WHERE id= ?1"
     )
     int updateTitle(Integer id,String title);
+
+    @Query(
+            nativeQuery = true,
+            value = "SELECT * FROM TITLE WHERE course_title= ?1"
+    )
+    List<Title> getTitlesByCourseId(int id);
 }
