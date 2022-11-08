@@ -28,7 +28,7 @@ function Home() {
   const deletecourse = (id) => {
     alert("Are you sure to delete this record!");
     axios
-      .delete(`http://localhost:5000/api/deletedriver/${id}`)
+      .delete(`http://localhost:8080/api/v1/course/course/${id}`)
       .then((response) => {
         setCourseList(
           CourseList.filter((items) => {
@@ -55,22 +55,22 @@ function Home() {
         </div>
         <br />
         <div className="card">
-          <table class="table table-hover">
+          <table className="table table-hover">
             <thead>
               <tr>
-                <th scope="col">#</th>
+                <th scope="col"></th>
                 <th scope="col">Course Name</th>
-                <th scope="col">Action</th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
               {items.map((item) => {
                 return (
                   <tr key={item.id}>
-                    <th scope="row">{item.id}</th>
+                    <th scope="row"></th>
                     <td>{item.courseTitle}</td>
                     <td>
-                      <Link to={"/content"}>
+                      <Link to={`/content?id=${item.id}`}>
                         <button className="btn btn-success m-1">View</button>
                       </Link>
                       <Link to={`/updatecourse?id=${item.id}`}>

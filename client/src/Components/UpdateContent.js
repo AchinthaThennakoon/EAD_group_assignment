@@ -1,31 +1,40 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import axios from "axios";
-import { useLocation } from 'react-router-dom'
+import { useLocation } from "react-router-dom";
 
 function UpdateContent() {
+  const limit =10;
   const [courseTopic, setContentTopic] = useState("");
   const [courseContent, setTopicContent] = useState("");
+  const [titleName, settitleName] = useState("");
+  const [getTitle, setgetTitle] = useState("");
 
-  const id = new URLSearchParams(useLocation().search).get('id')
+  const id = new URLSearchParams(useLocation().search).get("id");
 
+  const GetTitle = async () => {
+    try {
+      const res = await fetch(`http://localhost:8080/api/v1/title/title/${id}`);
+      const data = await res.json();
+
+      setgetTitle(data.titleName);
+    } catch (e) {
+      console.log(e);
+    }
+  };
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/api/driver/${id}`)
-      .then((res) => {
-        setContentTopic(res.data.courseTopic);
-        setTopicContent(res.data.courseContent);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+    GetTitle();
+  }, [limit]);
+
+  console.log(getTitle);
+  console.log(id);
 
   const updateContent = () => {
     axios
-      .put(`http://localhost:5000/api/driver/${id}`, {
-        courseTopic: courseTopic,
-        courseContent: courseContent,
+      .put(`http://localhost:8080/api/v1/title/editTitle`, {
+        id: id,
+        titleName: titleName
+        
       })
       .then(() => {
         console.log("Success");
@@ -35,42 +44,35 @@ function UpdateContent() {
 
   return (
     <div>
-    <div>
-      <Navbar />
-      <br />
-    </div>
-    <div className="container card">
-      <form>
-        <div class="form-group">
-          <br />
-          <label for="exampleFormControlInput1 p-2">Topic Name</label>
-          <br />
-
-          <input
-            type="text"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder=""
-            value={courseTopic}
-          />
-        </div>
+      <div>
+        <Navbar />
         <br />
+      </div>
+      <div className="container card">
+        <h1>Edit topic name</h1>
+        <form>
+          <div class="form-group">
+            <br />
+            <label for="exampleFormControlInput1 p-2">Topic Name</label>
+            <br />
 
-        <div class="form-group">
-          <label for="exampleFormControlTextarea1">Add Content</label>
-          <textarea
-            class="form-control"
-            id="exampleFormControlTextarea1"
-            rows="3"
-            value={courseContent}
-          ></textarea>
-          <br></br>
-        </div>
-        <button className="btn btn-primary m-2" onClick={updateContent}>Save</button>
-      </form>
+            <input
+             onChange={(event)=>{
+              settitleName(event.target.value)
+            }}
+              type="text"
+              class="form-control"
+              defaultValue={getTitle}
+            />
+          </div>
+          <br />
+          <button className="btn btn-primary m-2" onClick={updateContent}>
+            Update title name
+          </button>
+        </form>
+      </div>
     </div>
-  </div>
-  )
+  );
 }
 
 export default UpdateContent;

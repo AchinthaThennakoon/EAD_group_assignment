@@ -2,19 +2,21 @@ import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 function Content() {
+  const id = new URLSearchParams(useLocation().search).get("id");
+
   let limit = 10;
   const [items, setItems] = useState([]);
+  const [getcourse, setgetcourse] = useState("");
   const [TopicList, setTopicList] = useState([]);
 
   const getcontent = async () => {
     try {
       const res = await fetch(`http://localhost:8080/api/v1/title/`);
       const data = await res.json();
-      console.log(data.data);
-      const total = res.headers.get("x-total-count");
-
+      console.log(data)
       setItems(data);
     } catch (e) {
       console.log(e);
@@ -24,10 +26,25 @@ function Content() {
     getcontent();
   }, [limit]);
 
+  const Getcourse = async () => {
+    try {
+      const res = await fetch(`http://localhost:8080/api/v1/course/course/${id}`);
+      const data = await res.json();
+      
+      setgetcourse(data.courseTitle);
+
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  useEffect(() => {
+    Getcourse();
+  }, [limit]);
+
   const deleteTopic = (id) => {
     alert("Are you sure to delete this record!");
     axios
-      .delete(`http://localhost:5000/api/deletedriver/${id}`)
+      .delete(`http://localhost:8080/api/v1/title/deleteTitle/${id}`)
       .then((response) => {
         setTopicList(
           TopicList.filter((items) => {
@@ -44,14 +61,14 @@ function Content() {
       <br />
       <div className="container card">
         <div className="row">
-          <div className="h1 col-9 m-2">Course Topic</div>
+          <div className="h1 col-9 m-2">{getcourse}</div>
           <br />
           <div className="col-2">
-            <a href="/addcontent">
+            <Link to={`/addcontent?id=${id}`}>
               <button className="btn btn-primary m-2">Add Topic</button>
-            </a>
+            </Link>
           </div>
-          <table class="table table-hover">
+          <table className="table table-hover">
             <thead>
               <tr>
                 <th scope="col">Topic Name</th>
@@ -64,11 +81,14 @@ function Content() {
                   <tr key={item.id}>
                     <td>{item.titleName}</td>
                     <td>
-                      <Link to={"/contentview"}>
+                      <Link to={`/contentview?id=${item.id}`}>
                         <button className="btn btn-success m-1">View</button>
                       </Link>
                       <Link to={`/updatecontent?id=${item.id}`}>
                         <button className="btn btn-secondary m-1">Edit</button>
+                      </Link>
+                      <Link to={"/addsubtopic"}>
+                        <button className="btn btn-primary">Add Content</button>
                       </Link>
                       <button
                         className="btn btn-danger m-1"

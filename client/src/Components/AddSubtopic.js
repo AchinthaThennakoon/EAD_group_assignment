@@ -27,7 +27,7 @@ function AddSubtopic() {
       </div>
       <div className="container card">
         <form>
-          <div class="form-group">
+          <div className="form-group">
             <br />
             <label for="exampleFormControlInput1 p-2">Sub Topic Name</label>
             <br />
@@ -37,20 +37,20 @@ function AddSubtopic() {
                 setCourseTopic(event.target.value);
               }}
               type="text"
-              class="form-control"
+              className="form-control"
               id="exampleFormControlInput1"
               placeholder=""
             />
           </div>
           <br />
 
-          <div class="form-group">
+          <div className="form-group">
             <label for="exampleFormControlTextarea1">Add Content</label>
             <textarea
               onChange={(event) => {
                 setcourseContent(event.target.value);
               }}
-              class="form-control"
+              className="form-control"
               id="exampleFormControlTextarea1"
               rows="3"
             ></textarea>

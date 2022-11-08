@@ -1,32 +1,42 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import axios from "axios";
-import { useLocation } from 'react-router-dom'
+import { useLocation } from "react-router-dom";
 
 function UpdateCourse() {
+  const limit = 10;
   const [courseName, setCourseName] = useState("");
+  const [getcourse, setgetcourse] = useState("");
 
-  const id = new URLSearchParams(useLocation().search).get('id')
+  const id = new URLSearchParams(useLocation().search).get("id");
 
+  const Getcourse = async () => {
+    try {
+      const res = await fetch(
+        `http://localhost:8080/api/v1/course/course/${id}`
+      );
+      const data = await res.json();
+
+      setgetcourse(data.courseTitle);
+    } catch (e) {
+      console.log(e);
+    }
+  };
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/api/driver/${id}`)
-      .then((res) => {
-        setCourseName(res.data.course);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+    Getcourse();
+  }, [limit]);
+
+  console.log(courseName);
 
   const updateCourse = () => {
     axios
-      .put(`http://localhost:5000/api/driver/${id}`, {
-        courseName: courseName,
+      .put(`http://localhost:8080/api/v1/course/updateCourse`, {
+        id : id,
+        courseTitle: courseName,
       })
       .then(() => {
         console.log("Success");
-        alert("Driver Update successed!");
+        alert("Course name Update successed!");
       });
   };
 
@@ -42,20 +52,19 @@ function UpdateCourse() {
               <br></br>
               <br></br>
               <input
+                type="text"
+                defaultValue={getcourse}
                 onChange={(event) => {
                   setCourseName(event.target.value);
                 }}
-                type="text"
+                autoComplete=""
                 class="form-control"
-                id="coursename"
-                placeholder="Eg: HTMLF"
-                value={courseName}
               />
             </div>
             <br />
             <a href="/addcourse">
               <button className="btn btn-primary" onClick={updateCourse}>
-                Save
+                Update Course Name
               </button>
             </a>
           </form>

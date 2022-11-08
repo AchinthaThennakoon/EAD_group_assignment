@@ -1,25 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
+import { useLocation } from "react-router-dom";
 
 function ContentView() {
-  const [items, setItems] = useState([]);
   let limit = 10;
 
-  const getContent = async () => {
+  const id = new URLSearchParams(useLocation().search).get("id");
+
+  const [getTitle_, setgetTitle] = useState("");
+
+  const getTitle = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/maintanance`);
+      const res = await fetch(
+        `http://localhost:8080/api/v1/title/title/${id}`
+      );
       const data = await res.json();
       console.log(data.data);
-      const total = res.headers.get("x-total-count");
 
-      setItems(data);
+      setgetTitle(data.titleName);
     } catch (e) {
       console.log(e);
     }
   };
   useEffect(() => {
-    getContent();
+    getTitle();
   }, [limit]);
 
   return (
@@ -29,12 +34,8 @@ function ContentView() {
       <div className="container">
         <div className="contentHedder card">
           <br />
-          <h1>HTML</h1>
-          
+          <h1>{getTitle_}</h1>
         </div>
-        <Link to={'/addsubtopic'}>
-        <button className="btn btn-primary">Add Content</button>
-        </Link>
         <hr />
         <div className="content">
           <p>
