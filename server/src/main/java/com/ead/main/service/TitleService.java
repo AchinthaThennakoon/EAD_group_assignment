@@ -16,4 +16,6 @@ public interface TitleService {
     String deleteTitle(Integer id);
 
     Title getTitleById(int id);
+
+    List<Title> getTitleByCourseId(Integer id);
 }
