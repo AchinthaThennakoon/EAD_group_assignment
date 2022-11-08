@@ -13,7 +13,7 @@ function AddCourse() {
       })
       .then(() => {
         console.log('Success')
-        alert('Driver added successed!')
+        alert('Course added successed!')
         window.location.reload(false)
       })
     }
@@ -24,8 +24,10 @@ function AddCourse() {
       <br />
       <div className="container coursecon">
         <div className="form-control">
+          <h1>Add Course Name</h1>
+          <br/>
           <form>
-            <div class="form-group">
+            <div className="form-group">
               <label for="exampleFormControlInput1">Course Name:</label>
               <br></br>
               <br></br>
@@ -33,9 +35,8 @@ function AddCourse() {
                 setCourseName(event.target.value)
               }}
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="coursename"
-                placeholder="Eg: HTMLF"
               />
             </div>
             <br/>
