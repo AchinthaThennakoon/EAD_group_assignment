@@ -44,8 +44,11 @@ function UpdateCourse() {
     <div>
       <Navbar />
       <br />
-      <div className="container coursecon">
-        <div className="form-control">
+      <div className="container coursecon card">
+        <div className="card-header">
+          <h1>Update Course Name</h1>
+        </div>
+        <div className="form-control card-body">
           <form>
             <div class="form-group">
               <label for="exampleFormControlInput1">Course Name:</label>
@@ -68,9 +71,9 @@ function UpdateCourse() {
               </button>
             </a>
           </form>
+          </div>
         </div>
       </div>
-    </div>
   );
 }
 

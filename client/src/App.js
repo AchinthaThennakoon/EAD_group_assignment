@@ -6,8 +6,9 @@ import Content from "./Components/Content";
 import AddContent from "./Components/AddContent";
 import ContentView from "./Components/ContentView";
 import UpdateCourse from "./Components/UpdateCourse";
-import UpdateContent from "./Components/UpdateContent";
 import AddSubtopic from "./Components/AddSubtopic";
+import UpdateTitle from "./Components/UpdateTitle";
+import UpdateContent from "./Components/UpdateContent";
 
 function App() {
   return (
@@ -20,8 +21,9 @@ function App() {
           <Route path="/addcontent" element={<AddContent />} />
           <Route path="/contentview" element={<ContentView />} />
           <Route path="/updatecourse" element={<UpdateCourse />} />
-          <Route path="/updatecontent" element={<UpdateContent />} />
+          <Route path="/updatetitle" element={<UpdateTitle />} />
           <Route path="/addsubtopic" element={<AddSubtopic />} />
+          <Route path="/updatecontent" element={<UpdateContent />} />
         </Routes>
       </BrowserRouter>
     </div>
