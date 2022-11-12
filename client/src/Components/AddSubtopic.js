@@ -1,20 +1,25 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 function AddSubtopic() {
-  const [courseTopic, setCourseTopic] = useState("");
-  const [courseContent, setcourseContent] = useState("");
+
+  const id = new URLSearchParams(useLocation().search).get("id");
+
+  const [contentTopic, setContentTopic] = useState("");
+  const [content, setContent] = useState("");
 
   const addContent = () => {
     axios
-      .post(`http://localhost:8080/api/v1/title/addTitle`, {
-        titleName: courseTopic,
-        course: { id: 1 },
+      .post(`http://localhost:8080/api/v1/content/addContent`, {
+        contentTitle: contentTopic,
+        content: content,
+        title: { id: id },
       })
       .then(() => {
         console.log("Success");
-        alert("Driver added successed!");
+        alert("Content added successed!");
         window.location.reload(false);
       });
   };
@@ -26,6 +31,9 @@ function AddSubtopic() {
         <br />
       </div>
       <div className="container card">
+        <div className="card-header">
+          <h1>Add Content</h1>
+        </div>
         <form>
           <div className="form-group">
             <br />
@@ -34,25 +42,26 @@ function AddSubtopic() {
 
             <input
               onChange={(event) => {
-                setCourseTopic(event.target.value);
+                setContentTopic(event.target.value);
               }}
               type="text"
               className="form-control"
               id="exampleFormControlInput1"
-              placeholder=""
+              placeholder="Enter Content Title"
             />
           </div>
           <br />
 
           <div className="form-group">
-            <label for="exampleFormControlTextarea1">Add Content</label>
+            <label for="exampleFormControlTextarea1">Content</label>
             <textarea
               onChange={(event) => {
-                setcourseContent(event.target.value);
+                setContent(event.target.value);
               }}
               className="form-control"
               id="exampleFormControlTextarea1"
               rows="3"
+              placeholder="Type Content"
             ></textarea>
             <br></br>
           </div>

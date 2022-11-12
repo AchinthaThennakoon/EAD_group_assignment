@@ -26,15 +26,16 @@ function AddContent() {
 
   const Getcourse = async () => {
     try {
-      const res = await fetch(`http://localhost:8080/api/v1/course/course/${id}`);
+      const res = await fetch(
+        `http://localhost:8080/api/v1/course/course/${id}`
+      );
       const data = await res.json();
-      
-      setgetcourse(data.courseTitle);
 
+      setgetcourse(data.courseTitle);
     } catch (e) {
       console.log(e);
     }
-  }
+  };
   useEffect(() => {
     Getcourse();
   }, [limit]);
@@ -46,32 +47,36 @@ function AddContent() {
         <br />
       </div>
       <div className="container card">
-        <h1>Add Topics for {getcourse}</h1>
-        <form>
-          <div className="form-group">
-            <br />
-            <label for="exampleFormControlInput1 p-2">Topic Name</label>
+        <div className="card-header">
+          <h1>Add Topics for {getcourse}</h1>
+        </div>
+        <div className="card-body">
+          <form>
+            <div className="form-group">
+              <br />
+              <label for="exampleFormControlInput1 p-2">Topic Name</label>
+              <br />
+
+              <input
+                onChange={(event) => {
+                  setCourseTopic(event.target.value);
+                }}
+                type="text"
+                className="form-control"
+                id="exampleFormControlInput1"
+                placeholder=""
+              />
+            </div>
             <br />
 
-            <input
-              onChange={(event) => {
-                setCourseTopic(event.target.value);
-              }}
-              type="text"
-              className="form-control"
-              id="exampleFormControlInput1"
-              placeholder=""
-            />
-          </div>
-          <br />
-
-          <div className="form-group">
-            <br></br>
-          </div>
-          <button className="btn btn-primary m-2" onClick={addContent}>
-            Save
-          </button>
-        </form>
+            <div className="form-group">
+              <br></br>
+            </div>
+            <button className="btn btn-primary m-2" onClick={addContent}>
+              Save
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

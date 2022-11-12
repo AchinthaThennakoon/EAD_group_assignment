@@ -44,23 +44,25 @@ function Home() {
       <Navbar />
       <br />
       <div className="container homecon card">
-        <div className="row">
-          <div className="h1 col-9 m-2">Courses</div>
-          <br />
-          <div className="col-2">
-            <a href="/addcourse">
-              <Button className="btn btn-primary m-2">Add Course</Button>
-            </a>
+        <div className="card-header">
+          <div className="row">
+            <div className="h1 col-9 m-2">Courses</div>
+            <br />
+            <div className="col-2">
+              <a href="/addcourse">
+                <Button className="btn btn-primary m-2">Add Course</Button>
+              </a>
+            </div>
           </div>
         </div>
         <br />
-        <div className="card">
+        <div className="card-body">
           <table className="table table-hover">
             <thead>
               <tr>
                 <th scope="col"></th>
                 <th scope="col">Course Name</th>
-                <th scope="col"></th>
+                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -68,7 +70,7 @@ function Home() {
                 return (
                   <tr key={item.id}>
                     <th scope="row"></th>
-                    <td>{item.courseTitle}</td>
+                    <td className="h6 p-3">{item.courseTitle}</td>
                     <td>
                       <Link to={`/content?id=${item.id}`}>
                         <button className="btn btn-success m-1">View</button>

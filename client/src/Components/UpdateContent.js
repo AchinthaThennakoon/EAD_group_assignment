@@ -4,41 +4,44 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 
 function UpdateContent() {
-  const limit =10;
-  const [courseTopic, setContentTopic] = useState("");
-  const [courseContent, setTopicContent] = useState("");
-  const [titleName, settitleName] = useState("");
-  const [getTitle, setgetTitle] = useState("");
 
   const id = new URLSearchParams(useLocation().search).get("id");
 
-  const GetTitle = async () => {
+  const limit=  10;
+  const [content, setContent] = useState("");
+  const [contentTopic, setContentTopic] = useState("");
+  const [getcontent, setgetContent] = useState([]);
+
+  const getContent = async () => {
     try {
-      const res = await fetch(`http://localhost:8080/api/v1/title/title/${id}`);
+      const res = await fetch(
+        `http://localhost:8080/api/v1/content/content/${id}`
+      );
       const data = await res.json();
 
-      setgetTitle(data.titleName);
+      setgetContent(data);
     } catch (e) {
       console.log(e);
     }
   };
   useEffect(() => {
-    GetTitle();
+    getContent();
   }, [limit]);
 
-  console.log(getTitle);
-  console.log(id);
 
   const updateContent = () => {
     axios
-      .put(`http://localhost:8080/api/v1/title/editTitle`, {
-        id: id,
-        titleName: titleName
+      .put(`http://localhost:8080/api/v1/content/editContent`, {
+        contentId: id,
+        contentTitle: contentTopic,
+        content: content,
+        title: { id: getcontent.title.id },
+
         
       })
       .then(() => {
         console.log("Success");
-        alert("Driver Update successed!");
+        alert("Content Update successed!");
       });
   };
 
@@ -49,25 +52,44 @@ function UpdateContent() {
         <br />
       </div>
       <div className="container card">
-        <h1>Edit topic name</h1>
+        <div className="card-header">
+          <h1>Update Content</h1>
+        </div>
         <form>
-          <div class="form-group">
+          <div className="form-group">
             <br />
-            <label for="exampleFormControlInput1 p-2">Topic Name</label>
+            <label for="exampleFormControlInput1 p-2">Sub Topic Name</label>
             <br />
 
             <input
-             onChange={(event)=>{
-              settitleName(event.target.value)
-            }}
+              onChange={(event) => {
+                setContentTopic(event.target.value);
+              }}
               type="text"
-              class="form-control"
-              defaultValue={getTitle}
+              className="form-control"
+              id="exampleFormControlInput1"
+              placeholder="Enter Content Title"
+              defaultValue={getcontent.contentTitle}
             />
           </div>
           <br />
+
+          <div className="form-group">
+            <label for="exampleFormControlTextarea1">Content</label>
+            <textarea
+              onChange={(event) => {
+                setContent(event.target.value);
+              }}
+              className="form-control"
+              id="exampleFormControlTextarea1"
+              rows="3"
+              placeholder="Type Content"
+              defaultValue={getcontent.content}
+            ></textarea>
+            <br></br>
+          </div>
           <button className="btn btn-primary m-2" onClick={updateContent}>
-            Update title name
+            Save
           </button>
         </form>
       </div>
